@@ -2,10 +2,11 @@
   background: #2196f3;
   display: flex;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
+  box-sizing: border-box;
 }
 .header__container {
   max-width: 1316px;
-  margin: 0 auto;
+  margin: 0 62px;
   width: 100%;
 }
 
