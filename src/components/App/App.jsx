@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router";
-import { useEffectOnce } from "../../hooks/useEffectOnce";
 import api from "../../utils/Api";
 import Cats from "../Cats/Cats";
 import Header from "../Header/Header";
