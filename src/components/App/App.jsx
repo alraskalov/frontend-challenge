@@ -19,7 +19,7 @@ const App = () => {
         .then((res) => {
           const newCats = res.map((cat) => {
             return {
-              id: cat.id,
+              id: cat.id + new Date().getMilliseconds(),
               url: cat.url,
               isLiked: false,
             };

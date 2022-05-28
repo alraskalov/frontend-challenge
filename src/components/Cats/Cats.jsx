@@ -27,7 +27,13 @@ const Cats = ({ cats, onCardLike, onUpdateFetching, fetching }) => {
       <CatsCardList>
         {!!cats.length &&
           cats.map((cat) => {
-            return <CatsCard key={cat.id} cats={cat} onCardLike={onCardLike} />;
+            return (
+              <CatsCard
+                key={`${cat.id}`}
+                cats={cat}
+                onCardLike={onCardLike}
+              />
+            );
           })}
       </CatsCardList>
       {fetching && <p className="cats__text">... загружаем еще котиков ...</p>}
