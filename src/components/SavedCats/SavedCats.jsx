@@ -1,6 +1,7 @@
-import React from 'react';
-import CatsCard from '../CatsCard/CatsCard';
-import CatsCardList from '../CatsCardList/CatsCardList';
+import React from "react";
+import CatsCard from "../CatsCard/CatsCard";
+import CatsCardList from "../CatsCardList/CatsCardList";
+import "./SavedCats.css";
 
 const SavedCats = () => {
   return (
