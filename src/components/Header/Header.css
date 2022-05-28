@@ -24,10 +24,8 @@
 .header__menu-item {
   display: flex;
   transition: background 0.5s;
-  height: 64px;
   align-items: center;
   justify-content: center;
-  padding: 0 17px;
   color: rgba(255, 255, 255, 0.7);
   background-color: #2196f3;
   transition: background-color 0.3s;
@@ -47,4 +45,12 @@
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.25px;
+  padding: 23px 17px;
+}
+
+.header__menu-item_active {
+  transition: background-color 0.3s;
+  transition: color 0.3s;
+  background-color: #1e88e5;
+  color: #fff;
 }
