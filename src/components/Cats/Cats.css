@@ -6,6 +6,13 @@
   flex-direction: column;
 }
 
+.cats__text {
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.25px;
+}
+
 .page__cats {
-  margin: 48px auto;
+  margin: 48px auto 31px;
 }

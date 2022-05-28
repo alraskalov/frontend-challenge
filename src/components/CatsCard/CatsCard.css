@@ -45,6 +45,10 @@
   background-image: url("../../images/liked.svg");
 }
 
+.cats-card__btn_active {
+  background-image: url("../../images/liked.svg");
+}
+
 .cats-card:hover .cats-card__btn {
   visibility: visible;
   transition: visibility 1s linear;

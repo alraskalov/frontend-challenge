@@ -9,31 +9,59 @@ import "./App.css";
 
 const App = () => {
   const [cats, setCats] = useState([]);
-  console.log(cats);
+  const [savedCats, setSavedCats] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [fetching, setFetching] = useState(true);
 
-  useEffectOnce(() => {
-    api
-      .getCats(15)
-      .then((res) => {
-        setCats(
-          res.map((cat) => {
+  useEffect(() => {
+    if (fetching) {
+      api
+        .getCats(currentPage)
+        .then((res) => {
+          const newCats = res.map((cat) => {
             return {
               id: cat.id,
               url: cat.url,
               isLiked: false,
             };
-          })
-        );
-      })
-      .catch((err) => console.log(err));
-  }, []);
+          });
+          setCats([...cats, ...newCats]);
+          setCurrentPage((state) => state + 1);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => setFetching(false));
+    }
+  }, [fetching]);
+
+  const handleCardLike = (card) => {
+    card.isLiked = card.isLiked ? false : true;
+    setSavedCats(cats.filter((cat) => cat.isLiked === true));
+  };
+
+  const handleUpdateFetching = (fetching) => {
+    setFetching(fetching);
+  };
 
   return (
     <div className="page">
       <Header />
       <Routes>
-        <Route index path="/cats" element={<Cats cats={cats} />} />
-        <Route path="/saved-cats" element={<SavedCats />} />
+        <Route
+          index
+          path="/cats"
+          element={
+            <Cats
+              cats={cats}
+              fetching={fetching}
+              onCardLike={handleCardLike}
+              onUpdateFetching={handleUpdateFetching}
+            />
+          }
+        />
+        <Route
+          path="/saved-cats"
+          element={<SavedCats cats={savedCats} onCardLike={handleCardLike} />}
+        />
         <Route path="*" element={<Navigate to="/cats" />} />
       </Routes>
     </div>
