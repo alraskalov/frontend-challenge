@@ -1,27 +1,27 @@
 import React from "react";
+import CatsCard from "../CatsCard/CatsCard";
 import CatsCardList from "../CatsCardList/CatsCardList";
 import "./Cats.css";
-import cat from "../../images/cat.jpg";
 
 const Cats = () => {
   return (
     <section className="cats page__cats">
       <CatsCardList>
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
-        <img src={cat} alt="" />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
+        <CatsCard />
       </CatsCardList>
     </section>
   );
