@@ -3,7 +3,7 @@ import CatsCard from "../CatsCard/CatsCard";
 import CatsCardList from "../CatsCardList/CatsCardList";
 import "./Cats.css";
 
-const Cats = ({ cats, onCardLike, onUpdateFetching, fetching }) => {
+const Cats = ({ cats, onCardLike, onUpdateFetching, fetching, onCardClick }) => {
   const scrollHandler = (e) => {
     if (
       e.target.documentElement.scrollHeight -
@@ -32,6 +32,7 @@ const Cats = ({ cats, onCardLike, onUpdateFetching, fetching }) => {
                 key={`${cat.id}`}
                 cats={cat}
                 onCardLike={onCardLike}
+                onCardClick={onCardClick}
               />
             );
           })}

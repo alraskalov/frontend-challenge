@@ -6,8 +6,8 @@ class Api {
     this._headers = options.headers;
   }
 
-  async getCats(page) {
-    return await fetch(`${this._url}/v1/images/search?limit=15&page=${page}&size=thumb`, {
+  getCats(page) {
+    return fetch(`${this._url}/v1/images/search?limit=15&page=${page}`, {
       method: "GET",
       headers: { ...this._headers },
     }).then((res) => this._getResponse(res));

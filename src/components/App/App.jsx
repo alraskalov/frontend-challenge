@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router";
 import api from "../../utils/Api";
 import Cats from "../Cats/Cats";
 import Header from "../Header/Header";
+import ImagePopup from "../ImagePopup/ImagePopup";
 import SavedCats from "../SavedCats/SavedCats";
 import "./App.css";
 
@@ -11,6 +12,7 @@ const App = () => {
   const [savedCats, setSavedCats] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [fetching, setFetching] = useState(true);
+  const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
     if (fetching) {
@@ -24,7 +26,7 @@ const App = () => {
               isLiked: false,
             };
           });
-          setCats([...cats, ...newCats]);
+          setCats(c => [...c, ...newCats]);
           setCurrentPage((state) => state + 1);
         })
         .catch((err) => console.log(err))
@@ -37,13 +39,22 @@ const App = () => {
     setSavedCats(cats.filter((cat) => cat.isLiked === true));
   };
 
+  const handleCardClick = (card) => {
+    setSelectedCard(card);
+  };
+
   const handleUpdateFetching = (fetching) => {
     setFetching(fetching);
+  };
+
+  const closePopup = () => {
+    setSelectedCard({})
   };
 
   return (
     <div className="page">
       <Header />
+      <ImagePopup card={selectedCard} onClose={closePopup} />
       <Routes>
         <Route
           index
@@ -53,13 +64,20 @@ const App = () => {
               cats={cats}
               fetching={fetching}
               onCardLike={handleCardLike}
+              onCardClick={handleCardClick}
               onUpdateFetching={handleUpdateFetching}
             />
           }
         />
         <Route
           path="/saved-cats"
-          element={<SavedCats cats={savedCats} onCardLike={handleCardLike} />}
+          element={
+            <SavedCats
+              cats={savedCats}
+              onCardClick={handleCardClick}
+              onCardLike={handleCardLike}
+            />
+          }
         />
         <Route path="*" element={<Navigate to="/cats" />} />
       </Routes>
