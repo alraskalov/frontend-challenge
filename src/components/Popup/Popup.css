@@ -30,8 +30,8 @@
 
 .popup__close-btn {
   position: absolute;
-  top: 13px;
-  right: 124px;
+  top: -40px;
+  right: -40px;
   width: 32px;
   height: 32px;
   background-image: url("../../images/close-icon.svg");
@@ -41,12 +41,24 @@
   cursor: pointer;
 }
 
+.popup__container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (max-width: 560px) {
+  .popup__container {
+    width: 282px;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .popup__close-btn {
     width: 20px;
     height: 20px;
     background-size: contain;
-    right: 40px;
-    top: 140px;
+    right: 0;
   }
 }
