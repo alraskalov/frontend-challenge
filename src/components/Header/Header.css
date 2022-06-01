@@ -54,3 +54,13 @@
   background-color: #1e88e5;
   color: #fff;
 }
+
+@media screen and (max-width: 496px) {
+  .header__menu {
+    justify-content: center;
+    display: block;
+  }
+  .header__menu-list {
+    flex-direction: column;
+  }
+}
