@@ -2,7 +2,6 @@ import Popup from "../Popup/Popup";
 import './ImagePopup.css'
 
 function ImagePopup({ card, onClose }) {
-  console.log(card);
   return (
     <Popup isOpen={card.url} name="image" onClose={onClose}>
       <figure className="popup__figure">

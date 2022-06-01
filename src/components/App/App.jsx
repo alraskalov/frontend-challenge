@@ -15,6 +15,17 @@ const App = () => {
   const [selectedCard, setSelectedCard] = useState({});
 
   useEffect(() => {
+    const localCats = JSON.parse(localStorage.getItem("cats"));
+    if (localCats) {
+      setSavedCats(localCats);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cats", JSON.stringify(savedCats));
+  }, [savedCats]);
+
+  useEffect(() => {
     if (fetching) {
       api
         .getCats(currentPage)
@@ -26,7 +37,7 @@ const App = () => {
               isLiked: false,
             };
           });
-          setCats(c => [...c, ...newCats]);
+          setCats((c) => [...c, ...newCats]);
           setCurrentPage((state) => state + 1);
         })
         .catch((err) => console.log(err))
@@ -48,7 +59,7 @@ const App = () => {
   };
 
   const closePopup = () => {
-    setSelectedCard({})
+    setSelectedCard({});
   };
 
   return (
